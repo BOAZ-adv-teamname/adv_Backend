@@ -3,6 +3,14 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 }
+jar {
+	manifest {
+		attributes  'Main-Class': 'com.boaz.news_service.NewsServiceApplication'
+	}
+	from {
+		configurations.compile.collect {it.isDirectory()? it: zipTree(it)}
+	}
+}
 
 group = 'com.boaz'
 version = '0.0.1-SNAPSHOT'
@@ -18,6 +26,10 @@ configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
+}
+
+springBoot {
+	mainClassName = 'com.boaz.news_service.NewsServiceApplication'
 }
 
 repositories {

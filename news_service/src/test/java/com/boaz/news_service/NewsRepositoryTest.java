@@ -12,6 +12,7 @@ import org.springframework.data.domain.PageRequest;
 import java.util.List;
 import java.util.Optional;
 
+/*
 @SpringBootTest
 public class NewsRepositoryTest {
 
@@ -60,3 +61,4 @@ public class NewsRepositoryTest {
         news.forEach(board -> System.out.println(board.toString()));
     }
 }
+*/

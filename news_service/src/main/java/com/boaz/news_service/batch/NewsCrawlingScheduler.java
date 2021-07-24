@@ -40,7 +40,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+/*
 @Component
 @Slf4j
 @PropertySource("static/batch.properties")
@@ -320,4 +320,4 @@ public class NewsCrawlingScheduler {
         } else return true;
     }
 }
-
+*/

@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import javax.transaction.Transactional;
 import java.util.Optional;
 
+/*
 @SpringBootTest
 public class CategoryRepositoryTest {
 
@@ -42,3 +43,4 @@ public class CategoryRepositoryTest {
         });
     }
 }
+*/

@@ -12,6 +12,7 @@ import javax.transaction.Transactional;
 import java.security.NoSuchAlgorithmException;
 import java.util.Optional;
 
+/*
 @Slf4j
 @SpringBootTest
 public class MemberRepositoryTest {
@@ -104,3 +105,4 @@ public class MemberRepositoryTest {
         }
     }
 }
+*/
