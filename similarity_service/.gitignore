@@ -7,3 +7,5 @@ service/Output/*.txt
 *.pyc
 *.pt
 *.csv
+*.json
+*.pkl

@@ -1,22 +1,35 @@
+import pandas as pd
+import numpy as np
 import torch
-from sentence_transformers import SentenceTransformer, util
+import pickle
+import re
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import TfidfVectorizer
+from sentence_transformers import SentenceTransformer, util
 
 from model.precedent_dao import *
 
 def vectorization(DATABASE,NEWS):
-    model_path = 'paraphrase-multilingual-mpnet-base-v2'
+    model_path = './model/-2021-07-14_21-48-16'
     embedder = SentenceTransformer(model_path)
     query = NEWS
 
-    corpus_embeddings = torch.load('./model/Sum_Database/law_encoder.pt',map_location=torch.device('cpu'))
+    if torch.cuda.is_available():
+        with open('./model/Sum_Database/embeddings.pkl', "rb") as fIn:
+            stored_data = pickle.load(fIn)
+            corpus_embeddings = stored_data['embeddings']
+    else:
+        with open('./model/Sum_Database/embeddings_cpu.pkl', "rb") as fIn:
+            stored_data = pickle.load(fIn)
+            corpus_embeddings = stored_data['embeddings']
+        
+
     query_embedding = embedder.encode(query, convert_to_tensor=True)
     X = (corpus_embeddings,query_embedding)
     return X
 
 def Cosine_similarity(X,DATABASE):
-    top_k = 3
+    top_k = 3 ; threshhold=0.3
     news = X[1]
     laws = X[0]
     cos_scores = util.pytorch_cos_sim(news, laws)[0]
@@ -26,7 +39,10 @@ def Cosine_similarity(X,DATABASE):
 
     final=[]
     for idx in top_results[0:top_k]:
-        final.append(DATABASE[idx].strip())
+        if cos_scores[idx] < threshhold:
+            final.append('유사한 판례가 없습니다.')
+        else:
+            final.append(DATABASE[idx].strip())
     return final
     
 def make_simtext(news):
