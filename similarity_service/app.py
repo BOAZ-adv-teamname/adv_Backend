@@ -1,9 +1,12 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, config, render_template, request, jsonify
 from flask_cors import CORS, cross_origin
 from flask_restful import reqparse
+#from flask_cache import Cache
 
 from model.precedent_dao import *
 from service.similarity_service import *
+
+import time
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/pin": {"origins": "*"}})
@@ -17,6 +20,8 @@ def index():
 @app.route('/pin', methods = ['POST','OPTIONS'])
 @cross_origin()
 def pin():
+  start = time.time()
+  print("start")
   parser = reqparse.RequestParser()
   parser.add_argument('news', type=str)
   args = parser.parse_args()
@@ -30,6 +35,7 @@ def pin():
     "similar_precedent2":similar_precedent[1],
     "similar_precedent3":similar_precedent[2]
   }
+  print(start-time.time())
 
   return jsonify(data)
 
