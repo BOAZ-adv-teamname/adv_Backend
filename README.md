@@ -1,11 +1,15 @@
 # adv_Backend
 
-<img src="https://user-images.githubusercontent.com/61506233/127491993-78bfc6d1-e520-41b1-af3b-8db41186a657.png" width="900" />
+<p align="left">
+<img src="https://user-images.githubusercontent.com/61506233/127491993-78bfc6d1-e520-41b1-af3b-8db41186a657.png" width="800" />
+</p>
 
 
 
+<p align="center">
+ <img src="https://user-images.githubusercontent.com/61506233/127490989-fe11e1f0-86e3-4827-b3e1-abd0b6b8979f.png" width="900" />
+</p>
 
-![image](https://user-images.githubusercontent.com/61506233/127490989-fe11e1f0-86e3-4827-b3e1-abd0b6b8979f.png)
 
 
 <p align="center">
